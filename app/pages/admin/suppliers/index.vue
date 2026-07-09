@@ -1,0 +1,91 @@
+<template>
+  <div>
+    <h1 class="page-title mb-6">{{ $t('admin.supplierManagement') }}</h1>
+
+    <div class="flex flex-wrap gap-3 mb-4">
+      <BaseSelect
+        v-model="filters.status"
+        :options="statusOptions"
+        :placeholder="$t('common.allStatuses')"
+        class="w-44"
+        @update:model-value="fetchSuppliers"
+      />
+    </div>
+
+    <BaseCard :padding="false">
+      <BaseTable :columns="columns" :data="suppliers" :loading="loading">
+        <template #legalName="{ row }">
+          <div>
+            <p class="font-medium text-gray-900">{{ row.legalName || '-' }}</p>
+            <p class="text-xs text-gray-500">{{ row.userId?.email }}</p>
+          </div>
+        </template>
+        <template #productTypes="{ value }">
+          <div class="flex flex-wrap gap-1">
+            <BaseBadge v-for="p in (value || []).slice(0, 3)" :key="p" color="green">{{ p }}</BaseBadge>
+          </div>
+        </template>
+        <template #capabilityScore="{ value }">
+          <span :class="['font-medium', value >= 70 ? 'text-green-600' : value >= 40 ? 'text-yellow-600' : 'text-red-600']">{{ value }}/100</span>
+        </template>
+        <template #verificationStatus="{ value }">
+          <StatusBadge :status="value" />
+        </template>
+        <template #actions="{ row }">
+          <NuxtLink :to="`/admin/suppliers/${row._id}`" class="text-primary-600 hover:text-primary-700 text-sm font-medium">
+            {{ $t('admin.review') }}
+          </NuxtLink>
+        </template>
+      </BaseTable>
+      <BasePagination
+        :page="pagination.page"
+        :limit="pagination.limit"
+        :total="pagination.total"
+        :total-pages="pagination.totalPages"
+        @change="(p: number) => { pagination.page = p; fetchSuppliers(); }"
+      />
+    </BaseCard>
+  </div>
+</template>
+
+<script setup lang="ts">
+definePageMeta({ layout: 'admin', middleware: ['auth', 'role'] });
+
+const { t } = useI18n();
+const api = useApi();
+const loading = ref(true);
+const suppliers = ref<any[]>([]);
+const filters = reactive({ status: '' });
+const pagination = reactive({ page: 1, limit: 10, total: 0, totalPages: 0 });
+
+const columns = computed(() => [
+  { key: 'legalName', label: t('admin.businessName') },
+  { key: 'productTypes', label: t('admin.products') },
+  { key: 'capabilityScore', label: t('admin.score') },
+  { key: 'verificationStatus', label: t('common.status') },
+  { key: 'actions', label: '' },
+]);
+
+const statusOptions = computed(() => [
+  { value: '', label: t('common.allStatuses') },
+  { value: 'Pending', label: 'Pending' },
+  { value: 'Verified', label: 'Verified' },
+  { value: 'Rejected', label: 'Rejected' },
+]);
+
+const fetchSuppliers = async () => {
+  loading.value = true;
+  try {
+    const params: any = { page: pagination.page, limit: pagination.limit };
+    if (filters.status) params.status = filters.status;
+    const res = await api.get('/suppliers', params);
+    if (res.success) {
+      suppliers.value = res.data;
+      const meta = res.pagination || res.meta; if (meta) Object.assign(pagination, meta);
+    }
+  } catch { /* ignore */ }
+  loading.value = false;
+};
+
+onMounted(fetchSuppliers);
+</script>

@@ -1,0 +1,9 @@
+User-Agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /supplier/
+Disallow: /investor/
+Disallow: /login
+Disallow: /unauthorized
+
+Sitemap: https://agristellar.com/sitemap.xml
