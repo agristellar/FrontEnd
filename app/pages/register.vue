@@ -55,7 +55,7 @@
 
         <p class="mt-6 text-center text-sm text-gray-600">
           {{ $t('auth.hasAccount') }}
-          <NuxtLink to="/login" class="text-primary-600 font-medium hover:text-primary-700">{{ $t('common.signIn') }}</NuxtLink>
+          <NuxtLink :to="{path:'/login',query:authContinuationQuery(route.query)}" class="text-primary-600 font-medium hover:text-primary-700">{{ $t('common.signIn') }}</NuxtLink>
         </p>
       </div>
     </div>
@@ -63,9 +63,11 @@
 </template>
 
 <script setup lang="ts">
+import { authContinuationQuery } from '~/lib/auth-continuation';
 definePageMeta({ layout: 'default' });
 
 const { t } = useI18n();
+const route = useRoute();
 useSeoMeta({
   title: 'Create Account',
   description: 'Join AgriStellar as a supplier to access trade financing, or as an investor to earn returns from verified agricultural export campaigns.',
@@ -73,7 +75,7 @@ useSeoMeta({
 const { register } = useAuth();
 const loading = ref(false);
 const errorMsg = ref('');
-const form = reactive({ fullName: '', email: '', password: '', role: '' });
+const form = reactive({ fullName: '', email: '', password: '', role: ['Buyer','Supplier','Investor'].includes(String(route.query.role)) ? String(route.query.role) : '' });
 const errors = reactive({ fullName: '', email: '', password: '', role: '' });
 
 const roleOptions = computed(() => [

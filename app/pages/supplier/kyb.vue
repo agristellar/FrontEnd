@@ -73,7 +73,7 @@
             <p v-if="fieldErrors.productTypes" class="mt-1 text-sm text-red-600">{{ fieldErrors.productTypes }}</p>
           </div>
 
-          <BaseButton type="submit" :loading="submitting" :disabled="profile?.verificationStatus === 'Verified'">
+          <BaseButton type="submit" :loading="submitting" >
             {{ profile ? $t('supplier.updateKyb') : $t('supplier.submitKyb') }}
           </BaseButton>
         </form>
@@ -84,12 +84,16 @@
         <div class="space-y-4">
           <FileUploader
             :label="$t('supplier.businessLicense')"
+            :key="'license-' + uploadRevision"
+            data-kyb-upload-license
             accept=".pdf,.jpg,.png"
             hint="PDF, JPG, or PNG up to 5MB"
             @update:model-value="(files: File[]) => licenseFiles = files"
           />
           <FileUploader
             :label="$t('supplier.certificates')"
+            :key="'certificates-' + uploadRevision"
+            data-kyb-upload-certificates
             accept=".pdf,.jpg,.png"
             :multiple="true"
             :hint="$t('supplier.uploadCertHint')"
@@ -100,13 +104,19 @@
           </BaseButton>
         </div>
 
+        <div v-if="profile?.businessLicense" class="mt-6 flex flex-wrap gap-3 justify-between rounded-lg bg-gray-50 p-3 text-sm" data-kyb-license>
+          <span>{{ $t('supplier.businessLicense') }}</span>
+          <LegacyDocumentDownload :file-url="profile.businessLicense" :name="$t('supplier.businessLicense')" />
+        </div>
+
         <!-- Existing certificates -->
         <div v-if="profile?.certificates?.length" class="mt-6">
           <h4 class="text-sm font-medium text-gray-700 mb-3">{{ $t('supplier.uploadedCerts') }}</h4>
           <ul class="space-y-2">
-            <li v-for="cert in profile.certificates" :key="cert.name" class="flex items-center justify-between bg-gray-50 rounded-lg px-3 py-2 text-sm">
+            <li v-for="cert in profile.certificates" :key="cert.name" class="flex flex-wrap items-center justify-between gap-3 bg-gray-50 rounded-lg px-3 py-2 text-sm">
               <span>{{ cert.name }} <span class="text-gray-400">- {{ cert.issuedBy }}</span></span>
               <StatusBadge v-if="cert.expiredAt" :status="new Date(cert.expiredAt) > new Date() ? 'Active' : 'Expired'" />
+              <LegacyDocumentDownload :file-url="cert.fileUrl" :name="cert.name" />
             </li>
           </ul>
         </div>
@@ -129,6 +139,7 @@ const loading = ref(true);
 const submitting = ref(false);
 const uploading = ref(false);
 const productInput = ref('');
+const uploadRevision = ref(0);
 const licenseFiles = ref<File[]>([]);
 const certFiles = ref<File[]>([]);
 
@@ -204,10 +215,12 @@ const submitKYB = async () => {
 const uploadDocuments = async () => {
   uploading.value = true;
   try {
-    const allFiles = [...licenseFiles.value, ...certFiles.value];
-    if (allFiles.length) {
-      await uploadFiles('/suppliers/kyb/documents', allFiles);
-      success(t('supplier.uploaded'), t('supplier.uploadedDesc'));
+    const formData = new FormData();
+    licenseFiles.value.forEach(file => formData.append('businessLicense', file));
+    certFiles.value.forEach(file => formData.append('certificates', file));
+    if (licenseFiles.value.length || certFiles.value.length) {
+      const res = await api.upload('/suppliers/kyb/documents', formData);
+      if (res.success) { supplierStore.setProfile(res.data); licenseFiles.value = []; certFiles.value = []; uploadRevision.value++; await loadProfile(); success(t('supplier.uploaded'), t('supplier.uploadedDesc')); }
     }
   } catch (err: any) {
     notifyError('Upload Failed', err?.data?.error?.message || 'Failed to upload documents');

@@ -30,16 +30,20 @@
           </dl>
         </BaseCard>
 
+        <BaseCard v-if="supplier.businessLicense" :title="$t('supplier.businessLicense')" data-kyb-license>
+          <LegacyDocumentDownload :file-url="supplier.businessLicense" :name="$t('supplier.businessLicense')" />
+        </BaseCard>
+
         <!-- Certificates -->
         <BaseCard :title="$t('admin.certTitle')">
           <div v-if="!supplier.certificates?.length" class="text-sm text-gray-500 text-center py-4">{{ $t('admin.noCerts') }}</div>
           <ul v-else class="space-y-3">
-            <li v-for="cert in supplier.certificates" :key="cert.name" class="flex items-center justify-between bg-gray-50 rounded-lg px-4 py-3">
+            <li v-for="cert in supplier.certificates" :key="cert.name" class="flex flex-wrap items-center justify-between gap-3 bg-gray-50 rounded-lg px-4 py-3 min-w-0">
               <div>
                 <p class="text-sm font-medium text-gray-900">{{ cert.name }}</p>
                 <p class="text-xs text-gray-500">{{ $t('admin.issuedBy') }}: {{ cert.issuedBy }} | {{ $t('admin.expires') }}: {{ cert.expiredAt ? new Date(cert.expiredAt).toLocaleDateString() : 'N/A' }}</p>
               </div>
-              <a v-if="cert.fileUrl" :href="cert.fileUrl" target="_blank" class="text-sm text-primary-600 font-medium">{{ $t('common.view') }}</a>
+              <LegacyDocumentDownload v-if="cert.fileUrl" :file-url="cert.fileUrl" :name="cert.name" />
             </li>
           </ul>
         </BaseCard>
@@ -108,13 +112,13 @@ onMounted(async () => {
 const handleVerify = async () => {
   processing.value = true;
   try {
-    const res = await api.post(`/suppliers/${route.params.id}/verify`);
+    const res = await api.post(`/suppliers/${route.params.id}/verify`, { expectedVersion: supplier.value.__v || 0 });
     if (res.success) {
       supplier.value = res.data;
       success(t('common.approve'), t('admin.supplierApproved'));
     }
   } catch (err: any) {
-    notifyError('Error', err?.data?.error?.message || 'Failed to verify');
+    notifyError('Error', (err?.status === 409 || err?.statusCode === 409 ? t('admin.kybVersionChanged') : err?.data?.error?.message) || 'Failed to verify');
   }
   processing.value = false;
 };
@@ -122,13 +126,13 @@ const handleVerify = async () => {
 const handleReject = async () => {
   processing.value = true;
   try {
-    const res = await api.post(`/suppliers/${route.params.id}/reject`, { rejectionReason: rejectionReason.value });
+    const res = await api.post(`/suppliers/${route.params.id}/reject`, { rejectionReason: rejectionReason.value, expectedVersion: supplier.value.__v || 0 });
     if (res.success) {
       supplier.value = res.data;
       success(t('common.reject'), t('admin.supplierRejected'));
     }
   } catch (err: any) {
-    notifyError('Error', err?.data?.error?.message || 'Failed to reject');
+    notifyError('Error', (err?.status === 409 || err?.statusCode === 409 ? t('admin.kybVersionChanged') : err?.data?.error?.message) || 'Failed to reject');
   }
   processing.value = false;
 };

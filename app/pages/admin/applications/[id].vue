@@ -23,7 +23,7 @@
             <div><dt class="text-sm text-gray-500">{{ $t('common.buyer') }}</dt><dd class="text-sm font-medium mt-1">{{ app.contractId?.buyerName }}</dd></div>
             <div><dt class="text-sm text-gray-500">{{ $t('admin.country') }}</dt><dd class="text-sm font-medium mt-1">{{ app.contractId?.buyerRegion }}</dd></div>
             <div><dt class="text-sm text-gray-500">{{ $t('common.product') }}</dt><dd class="text-sm font-medium mt-1">{{ app.contractId?.product }}</dd></div>
-            <div><dt class="text-sm text-gray-500">{{ $t('common.quantity') }}</dt><dd class="text-sm font-medium mt-1">{{ app.contractId?.quantity }} tons</dd></div>
+            <div><dt class="text-sm text-gray-500">{{ $t('common.quantity') }}</dt><dd class="text-sm font-medium mt-1">{{ app.contractId?.quantity }} {{ app.contractId?.unit }}</dd></div>
             <div><dt class="text-sm text-gray-500">{{ $t('common.contractValue') }}</dt><dd class="text-sm font-medium mt-1">${{ Number(app.contractId?.contractValue).toLocaleString() }}</dd></div>
             <div><dt class="text-sm text-gray-500">{{ $t('common.paymentTerm') }}</dt><dd class="text-sm font-medium mt-1">{{ app.contractId?.paymentTerm }}</dd></div>
           </dl>
@@ -91,6 +91,16 @@
               Create Campaign
             </BaseButton>
           </div>
+        </BaseCard>
+
+        <BaseCard :title="$t('supplier.documents')">
+          <ul v-if="app.supportingDocuments?.length" class="space-y-3">
+            <li v-for="doc in app.supportingDocuments" :key="doc._id || doc.fileUrl" class="flex flex-wrap gap-3 justify-between rounded-lg bg-gray-50 p-3 text-sm">
+              <span>{{ doc.docType || $t('supplier.documents') }}</span>
+              <LegacyDocumentDownload :file-url="doc.fileUrl" />
+            </li>
+          </ul>
+          <p v-else class="text-sm text-gray-500">{{ $t('common.noData') }}</p>
         </BaseCard>
 
         <!-- Campaign Created -->

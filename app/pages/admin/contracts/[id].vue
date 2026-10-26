@@ -39,9 +39,10 @@
         <!-- Documents -->
         <BaseCard :title="$t('supplier.documents')">
           <div v-if="contract.documentFiles?.length" class="space-y-2">
-            <div v-for="doc in contract.documentFiles" :key="doc.fileUrl" class="flex items-center justify-between bg-gray-50 rounded-lg px-3 py-2 text-sm">
+            <div v-for="doc in contract.documentFiles" :key="doc.fileUrl" class="flex flex-wrap items-center justify-between gap-3 bg-gray-50 rounded-lg px-3 py-2 text-sm">
               <span class="text-gray-700">{{ doc.name }}</span>
               <span class="text-xs text-gray-400">{{ doc.uploadedAt ? new Date(doc.uploadedAt).toLocaleDateString() : '' }}</span>
+              <LegacyDocumentDownload :file-url="doc.fileUrl" :name="doc.name" />
             </div>
           </div>
           <p v-else class="text-sm text-gray-500">{{ $t('common.noData') }}</p>

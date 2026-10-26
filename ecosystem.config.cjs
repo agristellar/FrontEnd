@@ -1,6 +1,6 @@
 module.exports = {
     apps: [{
-        name: "stellar-harvest-fe",
+        name: "agristellar-fe",
         script: "npm run preview",
         watch: ["./"],
         // Delay between restart

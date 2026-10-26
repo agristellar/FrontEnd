@@ -21,7 +21,7 @@
         <dl class="space-y-3">
           <div class="flex justify-between"><dt class="text-sm text-gray-500">{{ $t('supplier.buyer') }}</dt><dd class="text-sm font-medium">{{ app.contractId?.buyerName }}</dd></div>
           <div class="flex justify-between"><dt class="text-sm text-gray-500">{{ $t('supplier.product') }}</dt><dd class="text-sm font-medium">{{ app.contractId?.product }}</dd></div>
-          <div class="flex justify-between"><dt class="text-sm text-gray-500">{{ $t('supplier.quantity') }}</dt><dd class="text-sm font-medium">{{ app.contractId?.quantity }} tons</dd></div>
+          <div class="flex justify-between"><dt class="text-sm text-gray-500">{{ $t('supplier.quantity') }}</dt><dd class="text-sm font-medium">{{ app.contractId?.quantity }} {{ app.contractId?.unit }}</dd></div>
           <div class="flex justify-between"><dt class="text-sm text-gray-500">{{ $t('supplier.contractValueLabel') }}</dt><dd class="text-sm font-medium">${{ Number(app.contractId?.contractValue).toLocaleString() }}</dd></div>
           <div class="flex justify-between"><dt class="text-sm text-gray-500">{{ $t('supplier.paymentTerm') }}</dt><dd class="text-sm font-medium">{{ app.contractId?.paymentTerm }}</dd></div>
           <div class="flex justify-between"><dt class="text-sm text-gray-500">{{ $t('supplier.incoterm') }}</dt><dd class="text-sm font-medium">{{ app.contractId?.incoterm || '-' }}</dd></div>
@@ -49,6 +49,16 @@
           <BaseTextarea v-model="additionalInfo" :label="$t('supplier.additionalInfo')" rows="3" />
           <BaseButton class="mt-3" :loading="submitting" @click="resubmit">{{ $t('supplier.resubmit') }}</BaseButton>
         </div>
+      </BaseCard>
+
+      <BaseCard :title="$t('supplier.documents')">
+        <ul v-if="app.supportingDocuments?.length" class="space-y-3">
+          <li v-for="doc in app.supportingDocuments" :key="doc._id || doc.fileUrl" class="flex flex-wrap gap-3 justify-between rounded-lg bg-gray-50 p-3 text-sm">
+            <span>{{ doc.docType || $t('supplier.documents') }}</span>
+            <LegacyDocumentDownload :file-url="doc.fileUrl" />
+          </li>
+        </ul>
+        <p v-else class="text-sm text-gray-500">{{ $t('common.noData') }}</p>
       </BaseCard>
 
       <!-- Campaign Info (if exists) -->

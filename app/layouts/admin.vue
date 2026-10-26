@@ -16,6 +16,7 @@ const { t } = useI18n();
 const sidebarOpen = ref(false);
 
 const navItems = computed(() => [
+  { to: '/workspace/admin', label: 'AgriStellar Platform' },
   { to: '/admin/dashboard', label: t('common.dashboard') },
   { to: '/admin/suppliers', label: t('admin.suppliers') },
   { to: '/admin/investors', label: t('admin.investors') },

@@ -40,7 +40,15 @@
     "clickToUpload": "Click to upload",
     "orDragDrop": "or drag and drop",
     "fileHint": "PDF, PNG, JPG up to 5MB",
-    "vsLastPeriod": "vs last period"
+    "vsLastPeriod": "vs last period",
+    "name": "Name",
+    "buyer": "Buyer",
+    "contractValue": "Contract value",
+    "paymentTerm": "Payment terms",
+    "product": "Product",
+    "purpose": "Purpose",
+    "quantity": "Quantity",
+    "tenor": "Tenor"
   },
   "nav": {
     "howItWorks": "How it works",
@@ -51,42 +59,42 @@
   },
   "hero": {
     "badge": "Trust layer built on Stellar Network",
-    "title": "Vietnam's Supplier Directory,",
-    "titleHighlight": "Verified On-chain",
-    "subtitle": "AgriStellar is a verified directory of Vietnamese suppliers — farms, craft villages, manufacturers. Legal status and certifications are issued as verifiable credentials on Stellar, so buyers verify them independently without trusting our database.",
+    "title": "Agricultural trade",
+    "titleHighlight": "Transparent on Stellar",
+    "subtitle": "Find buyers and suppliers, exchange RFQs, compare quotations and agree on contract terms before depositing XLM or USDC into Stellar escrow.",
     "ctaSupplier": "I'm a Supplier",
     "ctaBuyer": "I'm a Buyer / Sourcing",
-    "profileTitle": "Verified Profile",
-    "sampleSupplier": "Dak Lak Coffee Co-op",
+    "profileTitle": "Illustrative profile",
+    "sampleSupplier": "Example coffee company",
     "sampleProduct": "Robusta Coffee — Harvest Oct–Jan",
-    "tierBadge": "Tier 2",
+    "tierBadge": "Profile example",
     "didLabel": "Decentralized Identifier (DID)",
-    "legalCredential": "Registered Business (Tier 1)",
-    "legalIssuer": "KYB · matched with national registry",
-    "certCredential": "GlobalGAP Certificate (Tier 2)",
-    "certIssuer": "Certificate hash anchored on-chain",
+    "legalCredential": "Legal information",
+    "legalIssuer": "Evidence awaiting review",
+    "certCredential": "Product certification",
+    "certIssuer": "Hash anchored after credential issuance",
     "docAnchor": "Document integrity anchor",
-    "integrityOk": "Intact ✓",
-    "verifyNote": "Buyers verify signatures & hashes on-chain — no need to trust the platform"
+    "integrityOk": "Illustration",
+    "verifyNote": "Illustrative interface; this is not the verification result of an operating business."
   },
   "howItWorks": {
     "label": "Simple Process",
     "title": "How AgriStellar Works",
-    "subtitle": "From self-declared profiles to verifiable on-chain credentials. The platform handles no payments — contact and deals happen directly between parties.",
-    "step1Title": "Create Profile & DID (Tier 0)",
-    "step1Desc": "Suppliers register for free, receive a decentralized identifier (DID) and self-declare products, seasons and supply capacity. Profiles are labeled \"unverified\".",
-    "step2Title": "Legal Verification (Tier 1)",
-    "step2Desc": "KYB matches business/tax IDs against the national registry, issues a \"registered business\" credential on-chain and anchors document hashes.",
-    "step3Title": "Capability & Certifications (Tier 2)",
-    "step3Desc": "GlobalGAP, organic, ISO and production capacity are verified. Credential schemas are open so external certifiers can sign directly later.",
-    "step4Title": "Buyers Search & Self-verify",
-    "step4Desc": "Sourcing companies filter by product, certification, season and verification tier; check credential signatures and document hashes on-chain, then contact suppliers directly."
+    "subtitle": "From verified business profiles and RFQs to agreed contracts, wallet-signed escrow deposits and Stellar ledger reconciliation.",
+    "step1Title": "Create a business profile",
+    "step1Desc": "Buyers and suppliers describe their business, products and capacity, and choose which details to publish in the directory.",
+    "step2Title": "Submit and review evidence",
+    "step2Desc": "Submit private evidence against a published schema. Admin reviews it in the application; issuing a Stellar credential is a separate step with an issuer and expiry.",
+    "step3Title": "RFQs and agreed terms",
+    "step3Desc": "Publish multiple requested items, compare quotes on matching terms and approve the same contract version together.",
+    "step4Title": "Deposit and track",
+    "step4Desc": "Users sign with their wallets to deposit tokens into escrow, track release or refunds and reconcile the outcome on Stellar."
   },
   "forSuppliers": {
     "badge": "For Suppliers",
     "title": "Turn Your Reputation into a Verifiable Asset",
     "benefit1Title": "Tamper-proof Credentials",
-    "benefit1Desc": "Legal status and certifications are issued as verifiable credentials on-chain — buyers check them themselves; nothing can be edited or forged.",
+    "benefit1Desc": "Submit legal and certification evidence for review. Issued credentials include an issuer, expiry and revocation status that buyers can check.",
     "benefit2Title": "Portable Identity (DID)",
     "benefit2Desc": "You own a decentralized identifier that anchors your credentials and reputation history — never locked into any platform.",
     "benefit3Title": "Stand Out from Unverified Listings",
@@ -107,15 +115,15 @@
   },
   "forBuyers": {
     "badge": "For Sourcing Companies & Buyers",
-    "title": "Find Trusted Suppliers — Verify Without Trusting Anyone",
+    "title": "Find counterparties and review trade evidence",
     "benefit1Title": "Fast Screening, Clean Data",
-    "benefit1Desc": "Filter by product, certification, season, capacity and verification tier — skip unverified, outdated or fake listings.",
+    "benefit1Desc": "Search by name, product, country and profile level. See public details and which evidence requires access permission.",
     "benefit2Title": "Independent On-chain Verification",
-    "benefit2Desc": "Check the verifier's signature and document hashes directly on the Stellar network — no reliance on the platform's database.",
+    "benefit2Desc": "Check issuer, expiry and the status of issued Stellar credentials. Application profile status is shown separately.",
     "benefit3Title": "Lower Due Diligence Costs",
-    "benefit3Desc": "Legal status and certifications are pre-verified to a common standard — no repeated manual vetting for every partner.",
-    "benefit4Title": "Stop Forged Documents",
-    "benefit4Desc": "On-chain document hashes expose any tampering instantly; expired or revoked credentials are flagged in the registry.",
+    "benefit3Desc": "Reuse submitted profiles and request time-limited access to the relevant levels for counterparty review.",
+    "benefit4Title": "Check document integrity",
+    "benefit4Desc": "Hashes help detect changed files. The contents of evidence still require review by a responsible person or organization.",
     "cta": "Start Finding Suppliers",
     "searchDemo": "coffee · GlobalGAP · Tier 2",
     "signatureValid": "Signature valid",
@@ -130,22 +138,22 @@
   },
   "securitySection": {
     "label": "Trust Layer on Stellar",
-    "title": "Blockchain as a Trusted Storage Layer — No Money Flows",
+    "title": "Credentials and trade escrow on Stellar",
     "feature1Title": "Attestation Registry (Soroban)",
     "feature1Desc": "A smart contract registry records credential issuance, issuer identity and revocation status. Credential contents are signed off-chain; the chain stores only references and status.",
     "feature2Title": "Document Integrity Anchoring",
-    "feature2Desc": "SHA-256 hashes of legal documents live on-chain; originals stay in encrypted off-chain storage. Anyone can check whether a document has been altered.",
-    "feature3Title": "Decentralized Identity (DID)",
-    "feature3Desc": "Each supplier is anchored to an identity on Stellar — the anchor for credentials and reputation history, supporting multiple authorized issuers (hybrid issuer model)."
+    "feature2Desc": "Issued credentials store hashes and status on-chain. Originals remain in encrypted private storage, and authorized readers can compare them.",
+    "feature3Title": "Wallet-signed escrow",
+    "feature3Desc": "Buyers sign deposits of XLM or USDC into a contract pool. Soroban checks release, refund and dispute rules; the current version has been tested on Testnet."
   },
   "cta": {
     "title": "Put Vietnamese Supplier Reputation on the Global Sourcing Map",
-    "subtitle": "Free listing for suppliers — verified, independently checkable data for buyers. No payments, no money flows — just the trust layer.",
-    "createAccount": "Create Free Account",
+    "subtitle": "Create a profile, find counterparties and agree RFQs in your workspace. Wallets sign escrow transactions; MoneyGram brings USDC into wallets after integration acceptance.",
+    "createAccount": "Create account",
     "learnMore": "Learn More"
   },
   "footer": {
-    "desc": "Verified Vietnamese supplier directory on Stellar Network. Identity, certifications and documents attested on-chain and independently verifiable. The platform processes no payments.",
+    "desc": "AgriStellar connects buyers and suppliers through profiles, RFQs and versioned contracts. Credentials and escrow are reconciled on Stellar; MoneyGram sandbox acceptance is pending.",
     "platform": "Platform",
     "account": "Account",
     "createAccount": "Create Account",
@@ -271,7 +279,7 @@
     "buyerCountry": "Buyer Country",
     "productLabel": "Product",
     "productPlaceholder": "e.g. Dragon Fruit, Coffee",
-    "quantity": "Quantity (tons)",
+    "quantity": "Quantity",
     "contractValue": "Contract Value (USD)",
     "paymentTerm": "Payment Term",
     "selectPaymentTerm": "Select payment term",
@@ -348,7 +356,8 @@
     "noVerifiedContracts": "No verified contracts available. Please create and submit a contract for verification first.",
     "contractSummary": "Contract Summary",
     "repaymentSource": "Repayment Source",
-    "repaymentSourcePlaceholder": "e.g. Buyer payment, Escrow, L/C"
+    "repaymentSourcePlaceholder": "e.g. Buyer payment, Escrow, L/C",
+    "riskScore": "Risk grade"
   },
   "investor": {
     "dashboard": "Investor Dashboard",
@@ -556,7 +565,8 @@
     "uploaded": "Uploaded",
     "phone": "Phone",
     "reviewedAt": "Reviewed at",
-    "reason": "Reason"
+    "reason": "Reason",
+    "kybVersionChanged": "The profile changed. Reload to review the new documents before approving."
   },
   "statuses": {
     "Verified": "Verified",
@@ -642,5 +652,14 @@
     "viewAllCampaigns": "View All Campaigns",
     "loadMore": "Load More",
     "loading": "Loading..."
+  },
+  "marketplace": {
+    "nav": "Marketplace",
+    "title": "Agricultural trade with verifiable contracts",
+    "subtitle": "Find buyers and suppliers, exchange RFQs, compare quotations and agree on contract terms before depositing XLM or USDC into Stellar escrow.",
+    "explore": "Explore the marketplace",
+    "moneygram": "The integration connects cash to USDC in the user wallet, followed by a separately signed deposit into an agricultural trade contract. MoneyGram handles KYC and ramp eligibility in supported markets.",
+    "status": "Escrow tested on Stellar Testnet. MoneyGram sandbox access and API keys are pending.",
+    "learn": "Learn about MoneyGram on Stellar"
   }
 }

@@ -13,6 +13,7 @@
       </div>
 
       <div class="card">
+        <p v-if="route.query.chat === '1'" class="mb-5 text-sm text-emerald-800 bg-emerald-50 p-3 rounded-lg">{{ ui('Đăng nhập để chat và tra cứu dữ liệu theo tổ chức của bạn.') }}</p>
         <form @submit.prevent="handleLogin" class="space-y-5">
           <BaseInput
             v-model="form.email"
@@ -44,9 +45,11 @@
           </BaseButton>
         </form>
 
+        <NuxtLink to="/privy-login" class="block mt-4 text-center text-sm text-primary-700 underline">Privy email OTP</NuxtLink>
+
         <p class="mt-6 text-center text-sm text-gray-600">
           {{ $t('auth.noAccount') }}
-          <NuxtLink to="/register" class="text-primary-600 font-medium hover:text-primary-700">{{ $t('auth.signUp') }}</NuxtLink>
+          <NuxtLink :to="{path:'/register',query:authContinuationQuery(route.query)}" class="text-primary-600 font-medium hover:text-primary-700">{{ $t('auth.signUp') }}</NuxtLink>
         </p>
       </div>
     </div>
@@ -54,9 +57,12 @@
 </template>
 
 <script setup lang="ts">
+import { authContinuationQuery } from '~/lib/auth-continuation';
 definePageMeta({ layout: 'default' });
 
 const { t } = useI18n();
+const route = useRoute();
+const { ui } = useWorkspaceText();
 useSeoMeta({
   title: 'Sign In',
   description: 'Sign in to AgriStellar to manage your agricultural export campaigns or investment portfolio.',

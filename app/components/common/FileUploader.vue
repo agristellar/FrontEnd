@@ -47,7 +47,7 @@
 
 <script setup lang="ts">
 const emit = defineEmits(['update:modelValue']);
-defineProps<{
+const props = defineProps<{
   label?: string;
   accept?: string;
   multiple?: boolean;
@@ -71,7 +71,8 @@ const handleDrop = (e: DragEvent) => {
 };
 
 const addFiles = (files: File[]) => {
-  selectedFiles.value.push(...files);
+  if (props.multiple) selectedFiles.value.push(...files);
+  else selectedFiles.value = files.slice(0, 1);
   emit('update:modelValue', selectedFiles.value);
 };
 

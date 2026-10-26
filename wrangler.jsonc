@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "agristellar-frontend",
+  "main": ".output/server/index.mjs",
+  "compatibility_date": "2025-07-15",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  // Preserve public runtime variables configured in the Cloudflare dashboard.
+  "keep_vars": true,
+  "vars": {
+    "NUXT_PUBLIC_API_BASE": "https://bex.agristellar.com/api",
+    "NUXT_PUBLIC_SITE_URL": "https://agristellar.com"
+  },
+  "assets": {
+    "binding": "ASSETS",
+    "directory": ".output/public"
+  },
+  "observability": {
+    "enabled": true
+  }
+}

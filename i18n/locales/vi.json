@@ -40,7 +40,15 @@
     "clickToUpload": "Nhấn để tải lên",
     "orDragDrop": "hoặc kéo thả",
     "fileHint": "PDF, PNG, JPG tối đa 5MB",
-    "vsLastPeriod": "so với kỳ trước"
+    "vsLastPeriod": "so với kỳ trước",
+    "name": "Tên",
+    "buyer": "Bên mua",
+    "contractValue": "Giá trị hợp đồng",
+    "paymentTerm": "Điều kiện thanh toán",
+    "product": "Sản phẩm",
+    "purpose": "Mục đích",
+    "quantity": "Số lượng",
+    "tenor": "Thời hạn"
   },
   "nav": {
     "howItWorks": "Cách hoạt động",
@@ -51,42 +59,42 @@
   },
   "hero": {
     "badge": "Lớp tin cậy xây dựng trên Stellar Network",
-    "title": "Danh bạ Nhà cung cấp Việt Nam",
-    "titleHighlight": "Xác thực On-chain",
-    "subtitle": "AgriStellar là danh bạ nhà cung cấp Việt Nam được xác thực — nông trại, cơ sở thủ công, xưởng sản xuất. Hồ sơ pháp lý và chứng nhận được phát hành dưới dạng chứng thực kiểm chứng được (verifiable credentials) trên Stellar. Bên mua tự kiểm tra độc lập, không cần tin vào nền tảng.",
+    "title": "Thương mại nông sản",
+    "titleHighlight": "Minh bạch trên Stellar",
+    "subtitle": "Tìm buyer và supplier, trao đổi RFQ, so sánh báo giá và chấp thuận hợp đồng trước khi nạp XLM hoặc USDC vào escrow trên Stellar.",
     "ctaSupplier": "Tôi là Nhà cung cấp",
     "ctaBuyer": "Tôi là Bên mua / Sourcing",
-    "profileTitle": "Hồ sơ đã xác thực",
-    "sampleSupplier": "HTX Cà phê Đắk Lắk",
+    "profileTitle": "Hồ sơ minh họa",
+    "sampleSupplier": "Doanh nghiệp cà phê minh họa",
     "sampleProduct": "Cà phê Robusta — Vụ thu hoạch T10–T1",
-    "tierBadge": "Tầng 2",
+    "tierBadge": "Ví dụ hồ sơ",
     "didLabel": "Định danh phi tập trung (DID)",
-    "legalCredential": "Doanh nghiệp đã đăng ký (Tầng 1)",
-    "legalIssuer": "KYB · đối chiếu cổng ĐKDN quốc gia",
-    "certCredential": "Chứng nhận GlobalGAP (Tầng 2)",
-    "certIssuer": "Hash chứng chỉ neo on-chain",
+    "legalCredential": "Thông tin pháp lý",
+    "legalIssuer": "Bằng chứng cần được thẩm định",
+    "certCredential": "Chứng nhận hàng hóa",
+    "certIssuer": "Neo hash sau khi phát hành chứng thực",
     "docAnchor": "Neo toàn vẹn tài liệu",
-    "integrityOk": "Toàn vẹn ✓",
-    "verifyNote": "Bên mua tự kiểm tra chữ ký & hash trên chuỗi — không phụ thuộc nền tảng"
+    "integrityOk": "Minh họa",
+    "verifyNote": "Mẫu giao diện minh họa; không phải kết quả xác minh của một doanh nghiệp đang hoạt động."
   },
   "howItWorks": {
     "label": "Quy trình đơn giản",
     "title": "Cách AgriStellar Hoạt động",
-    "subtitle": "Từ hồ sơ tự khai đến chứng thực kiểm chứng được on-chain. Nền tảng không xử lý thanh toán — việc liên hệ và giao dịch diễn ra trực tiếp giữa hai bên.",
-    "step1Title": "Tạo hồ sơ & DID (Tầng 0)",
-    "step1Desc": "Nhà cung cấp đăng ký miễn phí, được cấp định danh phi tập trung (DID) và tự khai mặt hàng, mùa vụ, năng lực cung cấp. Hồ sơ gắn nhãn \"chưa xác thực\".",
-    "step2Title": "Xác thực pháp lý (Tầng 1)",
-    "step2Desc": "Hệ thống KYB đối chiếu mã số doanh nghiệp/thuế với cổng đăng ký quốc gia, phát hành credential \"doanh nghiệp đã đăng ký\" on-chain và neo hash giấy tờ.",
-    "step3Title": "Năng lực & chứng nhận (Tầng 2)",
-    "step3Desc": "Xác minh GlobalGAP, hữu cơ, ISO và năng lực sản xuất. Schema mở để đơn vị cấp chứng nhận bên ngoài có thể tự ký trực tiếp về sau.",
-    "step4Title": "Bên mua tìm & tự kiểm chứng",
-    "step4Desc": "Công ty sourcing lọc theo mặt hàng, chứng nhận, mùa vụ và tầng xác thực; kiểm tra chữ ký credential và hash tài liệu ngay trên chuỗi, rồi liên hệ trực tiếp nhà cung cấp."
+    "subtitle": "Từ hồ sơ xác minh và RFQ đến hợp đồng được hai bên chấp thuận, đặt cọc qua ví và đối soát giao dịch trên Stellar.",
+    "step1Title": "Tạo hồ sơ doanh nghiệp",
+    "step1Desc": "Buyer và supplier khai báo doanh nghiệp, mặt hàng và năng lực; chọn thông tin được công bố trong danh bạ.",
+    "step2Title": "Nộp và thẩm định bằng chứng",
+    "step2Desc": "Nộp hồ sơ riêng theo schema. Admin thẩm định trong ứng dụng; phát hành chứng thực Stellar là bước riêng có issuer và thời hạn.",
+    "step3Title": "RFQ và thỏa thuận",
+    "step3Desc": "Gửi nhu cầu hoặc chào bán nhiều dòng, so sánh báo giá cùng điều kiện và cùng chấp thuận một phiên bản hợp đồng.",
+    "step4Title": "Đặt cọc và theo dõi",
+    "step4Desc": "Người dùng ký bằng ví để nạp token vào escrow, theo dõi giải ngân hoặc hoàn tiền và đối chiếu kết quả trên Stellar."
   },
   "forSuppliers": {
     "badge": "Cho Nhà cung cấp",
     "title": "Biến Uy tín thành Tài sản Kiểm chứng được",
     "benefit1Title": "Credential không thể làm giả",
-    "benefit1Desc": "Tư cách pháp lý và chứng nhận được phát hành dưới dạng chứng thực kiểm chứng được on-chain — bên mua tự kiểm tra, không thể chỉnh sửa hay giả mạo.",
+    "benefit1Desc": "Nộp bằng chứng pháp lý và chứng nhận để thẩm định. Chứng thực đã phát hành có issuer, thời hạn và trạng thái thu hồi để bên mua kiểm tra.",
     "benefit2Title": "Định danh mang đi được (DID)",
     "benefit2Desc": "Bạn sở hữu định danh phi tập trung làm điểm neo cho credential và lịch sử uy tín của mình — không bị khóa vào bất kỳ nền tảng nào.",
     "benefit3Title": "Nổi bật giữa hồ sơ chưa kiểm chứng",
@@ -107,15 +115,15 @@
   },
   "forBuyers": {
     "badge": "Cho Công ty Sourcing & Bên mua",
-    "title": "Tìm Nhà cung cấp Đáng tin — Kiểm chứng Không cần Tin ai",
+    "title": "Tìm đối tác và kiểm tra bằng chứng giao dịch",
     "benefit1Title": "Sàng lọc nhanh, dữ liệu sạch",
-    "benefit1Desc": "Lọc theo mặt hàng, chứng nhận, mùa vụ, năng lực và tầng xác thực — không mất công sàng lọc hồ sơ chưa kiểm chứng, lỗi thời hoặc giả mạo.",
+    "benefit1Desc": "Tìm theo tên, mặt hàng, quốc gia và cấp hồ sơ; xem rõ dữ liệu công khai và phần cần được cấp quyền.",
     "benefit2Title": "Kiểm chứng độc lập on-chain",
-    "benefit2Desc": "Kiểm tra chữ ký của đơn vị xác minh và hash tài liệu ngay trên mạng Stellar — không phụ thuộc vào cơ sở dữ liệu của nền tảng.",
+    "benefit2Desc": "Đối chiếu issuer, hạn và trạng thái chứng thực Stellar khi đã được phát hành; hồ sơ ứng dụng được hiển thị riêng.",
     "benefit3Title": "Giảm chi phí due diligence",
-    "benefit3Desc": "Tư cách pháp lý và chứng nhận đã được xác minh sẵn theo chuẩn chung, không phải lặp lại thẩm định thủ công cho từng đối tác.",
-    "benefit4Title": "Chặn giấy tờ giả mạo",
-    "benefit4Desc": "Hash tài liệu neo on-chain phát hiện ngay mọi chỉnh sửa; credential hết hạn hoặc bị thu hồi được cập nhật trong registry.",
+    "benefit3Desc": "Tái sử dụng hồ sơ đã nộp và xin quyền đọc theo cấp cùng thời hạn để phục vụ thẩm định đối tác.",
+    "benefit4Title": "Đối chiếu toàn vẹn tài liệu",
+    "benefit4Desc": "Hash giúp phát hiện tệp thay đổi. Nội dung bằng chứng vẫn cần thẩm định bởi người hoặc đơn vị có trách nhiệm.",
     "cta": "Bắt đầu tìm nhà cung cấp",
     "searchDemo": "cà phê · GlobalGAP · Tầng 2",
     "signatureValid": "Chữ ký hợp lệ",
@@ -130,22 +138,22 @@
   },
   "securitySection": {
     "label": "Lớp tin cậy trên Stellar",
-    "title": "Blockchain làm Lớp Lưu trữ Tin cậy — Không Xử lý Dòng tiền",
+    "title": "Chứng thực và escrow giao dịch trên Stellar",
     "feature1Title": "Sổ đăng ký Chứng thực (Soroban)",
     "feature1Desc": "Smart contract registry ghi nhận việc phát hành credential, danh tính bên cấp và trạng thái thu hồi. Nội dung credential ký off-chain; on-chain chỉ lưu tham chiếu và trạng thái.",
     "feature2Title": "Neo Toàn vẹn Tài liệu",
-    "feature2Desc": "Hash SHA-256 của giấy tờ pháp lý được lưu trên chuỗi; bản gốc đặt ở lưu trữ off-chain có mã hóa. Bất kỳ ai cũng đối chiếu được tài liệu có bị sửa hay không.",
-    "feature3Title": "Định danh Phi tập trung (DID)",
-    "feature3Desc": "Mỗi nhà cung cấp gắn với một định danh trên Stellar — điểm neo cho credential và lịch sử uy tín, hỗ trợ nhiều đơn vị cấp chứng thực (hybrid issuer)."
+    "feature2Desc": "Chứng thực đã phát hành lưu hash và trạng thái trên chuỗi; bản gốc nằm trong kho riêng mã hóa. Người được cấp quyền có thể đối chiếu tài liệu.",
+    "feature3Title": "Escrow có chữ ký ví",
+    "feature3Desc": "Buyer ký nạp XLM hoặc USDC vào pool của hợp đồng. Quy tắc giải ngân, hoàn tiền và tranh chấp được kiểm tra trên Soroban; bản hiện tại đã kiểm thử trên Testnet."
   },
   "cta": {
     "title": "Đưa Uy tín Nhà cung cấp Việt lên Bản đồ Sourcing Toàn cầu",
-    "subtitle": "Niêm yết miễn phí cho nhà cung cấp — dữ liệu xác thực, kiểm chứng được cho bên mua. Không thanh toán, không dòng tiền — chỉ là lớp tin cậy.",
-    "createAccount": "Tạo Tài khoản Miễn phí",
+    "subtitle": "Tạo hồ sơ, tìm đối tác và thống nhất RFQ trong workspace. Ví ký giao dịch escrow; MoneyGram là cửa nạp USDC vào ví sau khi tích hợp được nghiệm thu.",
+    "createAccount": "Tạo tài khoản",
     "learnMore": "Tìm hiểu thêm"
   },
   "footer": {
-    "desc": "Danh bạ nhà cung cấp Việt Nam được xác thực trên Stellar Network. Định danh, chứng nhận và tài liệu được chứng thực on-chain, kiểm chứng độc lập. Nền tảng không xử lý thanh toán.",
+    "desc": "AgriStellar kết nối buyer và supplier qua hồ sơ, RFQ và hợp đồng có phiên bản. Chứng thực và escrow được đối soát trên Stellar; MoneyGram đang chờ nghiệm thu sandbox.",
     "platform": "Nền tảng",
     "account": "Tài khoản",
     "createAccount": "Tạo Tài khoản",
@@ -271,7 +279,7 @@
     "buyerCountry": "Quốc gia Người mua",
     "productLabel": "Sản phẩm",
     "productPlaceholder": "VD: Thanh Long, Cà Phê",
-    "quantity": "Số lượng (tấn)",
+    "quantity": "Số lượng",
     "contractValue": "Giá trị Hợp đồng (USD)",
     "paymentTerm": "Phương thức Thanh toán",
     "selectPaymentTerm": "Chọn phương thức thanh toán",
@@ -348,7 +356,8 @@
     "noVerifiedContracts": "Chưa có hợp đồng nào được xác minh. Vui lòng tạo và gửi hợp đồng để xác minh trước.",
     "contractSummary": "Tóm tắt Hợp đồng",
     "repaymentSource": "Nguồn hoàn trả",
-    "repaymentSourcePlaceholder": "VD: Thanh toán từ người mua, Ký quỹ, L/C"
+    "repaymentSourcePlaceholder": "VD: Thanh toán từ người mua, Ký quỹ, L/C",
+    "riskScore": "Đánh giá rủi ro"
   },
   "investor": {
     "dashboard": "Bảng điều khiển Nhà đầu tư",
@@ -556,7 +565,8 @@
     "uploaded": "Tải lên",
     "phone": "Điện thoại",
     "reviewedAt": "Đã duyệt lúc",
-    "reason": "Lý do"
+    "reason": "Lý do",
+    "kybVersionChanged": "Hồ sơ đã thay đổi; tải lại để xem tài liệu mới trước khi duyệt"
   },
   "statuses": {
     "Verified": "Đã xác thực",
@@ -642,5 +652,14 @@
     "viewAllCampaigns": "Xem tất cả chiến dịch",
     "loadMore": "Xem thêm",
     "loading": "Đang tải..."
+  },
+  "marketplace": {
+    "nav": "Thị trường",
+    "title": "Kết nối thương mại nông sản với hợp đồng minh bạch",
+    "subtitle": "Tìm buyer và supplier, trao đổi RFQ, so sánh báo giá và chấp thuận hợp đồng trước khi nạp XLM hoặc USDC vào escrow trên Stellar.",
+    "explore": "Khám phá thị trường",
+    "moneygram": "Luồng tích hợp hỗ trợ tiền mặt thành USDC trong ví của người dùng, rồi người dùng ký đặt cọc vào hợp đồng nông sản. MoneyGram xử lý KYC và điều kiện nạp rút theo thị trường được phục vụ.",
+    "status": "Escrow đã kiểm thử trên Stellar Testnet. MoneyGram đang chuẩn bị sandbox và chưa được cấp API key.",
+    "learn": "Tìm hiểu MoneyGram trên Stellar"
   }
 }

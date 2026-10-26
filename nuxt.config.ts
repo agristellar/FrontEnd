@@ -2,11 +2,18 @@
 const defaultPort = 15007
 const port = Number.parseInt(process.env.FRONTEND_PORT || '', 10)
 const host = process.env.FRONTEND_HOST || '0.0.0.0'
+const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || process.env.SITE_URL || 'https://agristellar.com'
 
 export default defineNuxtConfig({
     compatibilityDate: '2025-07-15',
     devtools: { enabled: true },
-    sourcemap: false,
+    nitro: {
+        cloudflare: {
+            // Keep wrangler.jsonc as the deployment source of truth.
+            deployConfig: false,
+            nodeCompat: true,
+        },
+    },
     devServer: {
         host,
         port: Number.isNaN(port) ? defaultPort : port,
@@ -35,8 +42,8 @@ export default defineNuxtConfig({
 
     runtimeConfig: {
         public: {
-            apiBase: process.env.API_BASE_URL || 'http://localhost:3001/api',
-            siteUrl: process.env.SITE_URL || 'https://agristellar.com',
+            apiBase: process.env.NUXT_PUBLIC_API_BASE || process.env.API_BASE_URL || 'http://localhost:3001/api',
+            siteUrl,
         },
     },
 
@@ -51,7 +58,7 @@ export default defineNuxtConfig({
     css: ['~/assets/css/main.css'],
 
     site: {
-        url: process.env.SITE_URL || 'https://agristellar.com',
+        url: siteUrl,
         name: 'AgriStellar',
     },
 
@@ -85,7 +92,7 @@ export default defineNuxtConfig({
                 { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
                 { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap' },
                 { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-                { rel: 'canonical', href: process.env.SITE_URL || 'https://agristellar.com' },
+                { rel: 'canonical', href: siteUrl },
             ],
         },
     },

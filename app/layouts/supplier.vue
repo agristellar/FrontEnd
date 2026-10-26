@@ -16,6 +16,7 @@ const { t } = useI18n();
 const sidebarOpen = ref(false);
 
 const navItems = computed(() => [
+  { to: '/workspace', label: 'AgriStellar Trade Workspace' },
   { to: '/supplier/dashboard', label: t('common.dashboard') },
   { to: '/supplier/kyb', label: t('supplier.kybVerification') },
   { to: '/supplier/contracts', label: t('supplier.contracts') },

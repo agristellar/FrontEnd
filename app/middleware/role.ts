@@ -3,6 +3,8 @@ export default defineNuxtRouteMiddleware((to) => {
   const role = authStore.user?.role;
 
   if (!role) return navigateTo('/login');
+  const allowed = to.meta.roles as string[] | undefined;
+  if (allowed?.length && !allowed.includes(role)) return navigateTo('/unauthorized');
 
   const path = to.path;
 

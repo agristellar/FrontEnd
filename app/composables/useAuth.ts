@@ -1,9 +1,11 @@
 import { useAuthStore } from '~/stores/auth.store';
+import { rfqWorkspaceTarget } from '~/lib/auth-continuation';
 
 export const useAuth = () => {
   const api = useApi();
   const authStore = useAuthStore();
   const router = useRouter();
+  const route = useRoute();
   const accessToken = useCookie('access_token', { maxAge: 60 * 15 });
   const refreshToken = useCookie('refresh_token', { maxAge: 60 * 60 * 24 * 7 });
 
@@ -56,11 +58,20 @@ export const useAuth = () => {
   };
 
   const redirectByRole = (role: string) => {
+    if (route.query.chat === '1' && ['Buyer', 'Supplier', 'Admin'].includes(role)) {
+      router.push('/workspace/chat');
+      return;
+    }
+    const rfqTarget = rfqWorkspaceTarget(route.query, role);
+    if (rfqTarget) {
+      router.push(rfqTarget);
+      return;
+    }
     const routes: Record<string, string> = {
-      Supplier: '/supplier/dashboard',
+      Supplier: '/workspace',
       Investor: '/investor/dashboard',
       Admin: '/admin/dashboard',
-      Buyer: '/buyer/dashboard',
+      Buyer: '/workspace',
     };
     router.push(routes[role] || '/');
   };

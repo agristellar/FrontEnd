@@ -69,10 +69,11 @@ This frontend is the buyer- and supplier-facing application for AgriStellar. It 
 
 ## Setup
 
-Install dependencies:
+Use Node.js 24.19.0 or newer (`.node-version` pins the build version). Install
+the locked dependencies, including build tools:
 
 ```bash
-npm install
+npm ci --include=dev
 ```
 
 Start the development server:
@@ -84,20 +85,74 @@ npm run dev
 The local app runs at:
 
 ```text
-http://localhost:3000
+http://localhost:15007
 ```
 
-Build for production:
+## Cloudflare Workers
+
+The default production build targets Cloudflare Workers with Nuxt SSR. Static
+assets are served through the `ASSETS` binding; server routes such as
+`/sitemap.xml` run in the Worker. The backend stays at
+`https://bex.agristellar.com/api`.
+
+Build and check the deployment bundle without uploading:
 
 ```bash
 npm run build
+npm run deploy:check
 ```
 
-Preview the production build locally:
+Preview the built Worker locally on `http://localhost:8787`:
 
 ```bash
+cp .dev.vars.example .dev.vars
 npm run preview
 ```
+
+The example points API calls at a local backend. Edit `.dev.vars` to use
+`https://bex.agristellar.com/api` when needed. These variables are public and
+appear in the browser's Nuxt config.
+
+Deploy from your machine or server after authenticating:
+
+```bash
+npx wrangler login
+npm run deploy
+```
+
+`deploy` builds first, then uploads Worker code and static assets. The Worker
+name is `agristellar-frontend`; change `name` in `wrangler.jsonc` if the Cloudflare
+project has a different name. For headless CI, provide `CLOUDFLARE_API_TOKEN`
+and `CLOUDFLARE_ACCOUNT_ID` through CI secrets instead of using browser login.
+
+For automatic deploys through **Workers & Pages → Create → Import a repository**,
+configure Workers Builds as follows:
+
+| Setting | Value |
+| --- | --- |
+| Root directory | `/` for the standalone frontend repository; `frontend` for a combined repository |
+| Build command | `npm ci --include=dev && npm run build` |
+| Deploy command | `npx wrangler deploy` |
+| Build variable | `NODE_VERSION=24.19.0` (also pinned by `.node-version`) |
+| Build variable | `NUXT_PUBLIC_API_BASE=https://bex.agristellar.com/api` |
+| Build variable | `NUXT_PUBLIC_SITE_URL=https://agristellar.com` |
+
+`wrangler.jsonc` defines the same public runtime variables. Update both build
+variables and Wrangler variables if the API or site URL changes. Nuxt still
+accepts `API_BASE_URL` and `SITE_URL` for existing local setups; prefer the
+`NUXT_PUBLIC_*` names for Workers. Runtime `NUXT_PUBLIC_SITE_URL` controls the
+sitemap and public config, while the canonical tag is set at build time.
+
+After the first deploy, add `agristellar.com` under the Worker's
+**Settings → Domains & Routes** if that is the intended production domain.
+Allow that frontend origin in backend CORS and in Privy's allowed origins;
+also allow the `workers.dev` URL if using it for preview/login.
+
+The frontend does not need PM2 on Workers. For a separate Node deployment, use
+`npm run build:node` and `npm run preview:node`.
+
+References: [Cloudflare's Nuxt guide](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/nuxt/),
+[Workers Builds configuration](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/).
 
 ## Roadmap
 

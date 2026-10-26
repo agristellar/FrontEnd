@@ -40,12 +40,12 @@
         <BaseCard :title="$t('admin.kycDocuments')">
           <div v-if="!investor.kycDocuments?.length" class="text-sm text-gray-500 text-center py-4">{{ $t('admin.noKycDocs') }}</div>
           <ul v-else class="space-y-3">
-            <li v-for="doc in investor.kycDocuments" :key="doc._id || doc.docType" class="flex items-center justify-between bg-gray-50 rounded-lg px-4 py-3">
+            <li v-for="doc in investor.kycDocuments" :key="doc._id || doc.docType" class="flex flex-wrap items-center justify-between gap-3 bg-gray-50 rounded-lg px-4 py-3 min-w-0">
               <div>
                 <p class="text-sm font-medium text-gray-900">{{ formatDocType(doc.docType) }}</p>
                 <p class="text-xs text-gray-500">{{ $t('admin.uploaded') }}: {{ doc.uploadedAt ? new Date(doc.uploadedAt).toLocaleDateString() : '-' }}</p>
               </div>
-              <a v-if="doc.fileUrl" :href="doc.fileUrl" target="_blank" class="text-sm text-primary-600 font-medium">{{ $t('common.view') }}</a>
+              <LegacyDocumentDownload v-if="doc.fileUrl" :file-url="doc.fileUrl" :name="formatDocType(doc.docType)" />
             </li>
           </ul>
         </BaseCard>

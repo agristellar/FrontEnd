@@ -2,20 +2,21 @@
   <div class="min-h-screen flex flex-col bg-white">
     <!-- ═══ Navbar ═══ -->
     <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
-      <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="max-w-7xl mx-auto px-5 min-h-16 py-3 flex flex-wrap items-center justify-between gap-3">
         <NuxtLink to="/" class="flex items-center">
-          <img src="~/assets/images/logo.png" alt="AgriStellar" class="h-9" />
+          <img src="~/assets/images/logo.png" alt="AgriStellar" class="h-8 max-w-40 object-contain" />
         </NuxtLink>
-        <div class="hidden md:flex items-center gap-8">
+        <div class="hidden xl:flex items-center gap-6">
+          <NuxtLink to="/marketplace" class="text-sm text-gray-600 hover:text-gray-900 transition">{{ $t('marketplace.nav') }}</NuxtLink>
           <a href="#how-it-works" class="text-sm text-gray-600 hover:text-gray-900 transition">{{ $t('nav.howItWorks') }}</a>
           <a href="#for-suppliers" class="text-sm text-gray-600 hover:text-gray-900 transition">{{ $t('nav.forSuppliers') }}</a>
           <a href="#for-buyers" class="text-sm text-gray-600 hover:text-gray-900 transition">{{ $t('nav.forBuyers') }}</a>
           <a href="#security" class="text-sm text-gray-600 hover:text-gray-900 transition">{{ $t('nav.security') }}</a>
         </div>
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-2">
           <LangSwitcher />
-          <NuxtLink to="/login" class="text-sm font-medium text-gray-700 hover:text-gray-900 transition">{{ $t('common.signIn') }}</NuxtLink>
-          <NuxtLink to="/register" class="px-4 py-2 text-sm font-semibold text-white bg-primary-600 rounded-lg hover:bg-primary-700 transition shadow-sm">{{ $t('common.getStarted') }}</NuxtLink>
+          <NuxtLink to="/login" class="hidden sm:inline text-sm font-medium text-gray-700 hover:text-gray-900 transition">{{ $t('common.signIn') }}</NuxtLink>
+          <NuxtLink to="/register" class="px-3 py-2 text-xs sm:text-sm font-semibold text-white bg-primary-600 rounded-lg hover:bg-primary-700 transition shadow-sm">{{ $t('common.getStarted') }}</NuxtLink>
         </div>
       </div>
     </nav>
@@ -114,7 +115,15 @@
       </div>
     </section>
 
+    <TradeDiscovery />
+
     <!-- ═══ How It Works ═══ -->
+    <section class="py-16 bg-white border-b border-gray-100">
+      <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-8 items-center">
+        <div><p class="text-sm text-emerald-700 font-medium mb-3">AGRISTELLAR TRADE</p><h2 class="text-3xl font-semibold text-slate-900">{{ $t('marketplace.title') }}</h2><p class="text-slate-600 mt-4 leading-7">{{ $t('marketplace.subtitle') }}</p><NuxtLink to="/marketplace" class="inline-block mt-6 px-5 py-3 rounded-lg bg-emerald-700 text-white font-medium">{{ $t('marketplace.explore') }}</NuxtLink></div>
+        <div class="bg-emerald-950 text-white rounded-2xl p-8"><h3 class="font-semibold text-xl">MoneyGram → USDC → AgriStellar Escrow</h3><p class="text-emerald-100 leading-7 mt-4">{{ $t('marketplace.moneygram') }}</p><p class="text-emerald-200 text-xs mt-4">{{ $t('marketplace.status') }}</p><a href="https://stellar.org/products-and-tools/moneygram" target="_blank" rel="noopener noreferrer" class="inline-block underline text-sm mt-5">{{ $t('marketplace.learn') }}</a></div>
+      </div>
+    </section>
     <section id="how-it-works" class="py-24 bg-gray-50">
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-16">
@@ -205,6 +214,7 @@
         <div class="grid lg:grid-cols-2 gap-16 items-center">
           <!-- Visual: Directory Search Preview -->
           <div class="order-2 lg:order-1 bg-gradient-to-br from-gold-50 to-orange-50 rounded-2xl p-8 border border-gold-100">
+            <p class="text-xs text-amber-900 mb-4">{{ ui('Ví dụ minh họa, không phải hồ sơ doanh nghiệp đang được công bố.') }}</p>
             <!-- Search bar mockup -->
             <div class="bg-white rounded-xl px-4 py-3 shadow-sm border border-gray-100 flex items-center gap-3 mb-5">
               <svg class="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
@@ -319,50 +329,42 @@
     <!-- ═══ Footer ═══ -->
     <footer class="bg-gray-900 text-gray-400 py-12">
       <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div class="md:col-span-2">
-            <div class="mb-4">
-              <img src="~/assets/images/logo.png" alt="AgriStellar" class="h-8 brightness-0 invert" />
-            </div>
-            <p class="text-sm leading-relaxed max-w-md">{{ $t('footer.desc') }}</p>
-          </div>
-          <div>
-            <h4 class="text-sm font-semibold text-white mb-4">{{ $t('footer.platform') }}</h4>
-            <ul class="space-y-2 text-sm">
-              <li><a href="#how-it-works" class="hover:text-white transition">{{ $t('nav.howItWorks') }}</a></li>
-              <li><a href="#for-suppliers" class="hover:text-white transition">{{ $t('nav.forSuppliers') }}</a></li>
-              <li><a href="#for-buyers" class="hover:text-white transition">{{ $t('nav.forBuyers') }}</a></li>
-              <li><a href="#security" class="hover:text-white transition">{{ $t('nav.security') }}</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 class="text-sm font-semibold text-white mb-4">{{ $t('footer.account') }}</h4>
-            <ul class="space-y-2 text-sm">
-              <li><NuxtLink to="/login" class="hover:text-white transition">{{ $t('common.signIn') }}</NuxtLink></li>
-              <li><NuxtLink to="/register" class="hover:text-white transition">{{ $t('footer.createAccount') }}</NuxtLink></li>
-            </ul>
-          </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
+          <div><img src="~/assets/images/logo.png" alt="AgriStellar" class="h-8 brightness-0 invert mb-4" /><p class="text-sm leading-relaxed">{{ $t('footer.desc') }}</p></div>
+          <div v-for="group in publicFooterGroups" :key="group.label"><h4 class="text-sm font-semibold text-white mb-4">{{ group.label }}</h4><ul class="space-y-2 text-sm"><li v-for="link in group.links" :key="link.to"><NuxtLink :to="link.to" class="hover:text-white transition">{{ link.label }}</NuxtLink></li></ul></div>
         </div>
         <div class="mt-10 pt-6 border-t border-gray-800 text-center text-xs text-gray-500">
           &copy; {{ new Date().getFullYear() }} {{ $t('footer.copyright') }}
         </div>
       </div>
     </footer>
+    <NuxtLink to="/workspace/chat" class="fixed z-40 bottom-5 right-5 inline-flex items-center gap-2 rounded-full bg-emerald-800 text-white px-5 py-3 shadow-lg text-sm font-medium max-w-[calc(100vw-2.5rem)]" :aria-label="ui('Chat với AgriStellar')">
+      <svg aria-hidden="true" viewBox="0 0 24 24" class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z" /></svg>
+      {{ ui('Chat với AgriStellar') }}
+    </NuxtLink>
   </div>
 </template>
 
 <script setup lang="ts">
 definePageMeta({ layout: 'default' });
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
+const { ui } = useWorkspaceText();
 
 useSeoMeta({
-  title: 'AgriStellar — Verified Vietnamese Supplier Directory on Stellar',
-  ogTitle: 'AgriStellar — Verified Supplier Directory on Stellar',
+  title: () => locale.value === 'vi' ? 'AgriStellar — Giao dịch nông sản trên Stellar' : 'AgriStellar — Agricultural trade on Stellar',
+  ogTitle: 'AgriStellar — Agricultural trade on Stellar',
   description: () => t('hero.subtitle'),
   ogDescription: () => t('hero.subtitle'),
 });
 useHead({ titleTemplate: '' });
+
+const publicFooterGroups = computed(() => [
+  {label:ui('Khám phá'),links:[{to:'/marketplace?tab=suppliers',label:ui('Nhà cung cấp')},{to:'/marketplace?tab=products',label:ui('Sản phẩm')},{to:'/marketplace?tab=buy-orders',label:ui('Nhu cầu mua')},{to:'/marketplace?tab=sell-orders',label:ui('Chào bán')}]},
+  {label:ui('Theo vai trò'),links:[{to:'/#for-buyers',label:ui('Dành cho buyer')},{to:'/#for-suppliers',label:ui('Dành cho supplier')},{to:'/register?role=Buyer',label:ui('Tạo tài khoản buyer')},{to:'/register?role=Supplier',label:ui('Tạo tài khoản supplier')}]},
+  {label:ui('Thông tin'),links:[{to:'/marketplace?tab=news',label:ui('Tin tức')},{to:'/marketplace?tab=partner',label:ui('Đối tác và tài nguyên')},{to:'/#how-it-works',label:t('nav.howItWorks')},{to:'/#security',label:t('nav.security')}]},
+  {label:ui('Hỗ trợ'),links:[{to:'/marketplace?tab=contact',label:ui('Liên hệ')},{to:'/login',label:ui('Đăng nhập')},{to:'/register',label:ui('Tạo tài khoản')},{to:'/workspace/chat',label:ui('Chat với AgriStellar')}]},
+]);
 
 const steps = computed(() => [
   { title: t('howItWorks.step1Title'), desc: t('howItWorks.step1Desc'), bg: 'bg-primary-600' },

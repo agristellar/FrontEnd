@@ -1,12 +1,12 @@
 <template>
   <div>
-    <label v-if="label" :for="id" class="label">
+    <label v-if="label" :for="fieldId" class="label">
       {{ label }}
       <span v-if="required" class="text-red-500">*</span>
     </label>
     <div class="relative">
       <input
-        :id="id"
+        :id="fieldId"
         :type="type"
         :value="modelValue"
         :placeholder="placeholder"
@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
 defineEmits(['update:modelValue', 'blur']);
-defineProps<{
+const props = defineProps<{
   modelValue?: string | number;
   label?: string;
   type?: string;
@@ -35,4 +35,6 @@ defineProps<{
   hint?: string;
   id?: string;
 }>();
+const generatedId = useId();
+const fieldId = computed(() => props.id || generatedId);
 </script>
