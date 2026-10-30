@@ -4,6 +4,7 @@
     <h1 class="text-2xl font-semibold mt-4 mb-5">{{ rfq?.title || ui('Báo giá') }}</h1>
     <p v-if="notice" role="status" class="p-3 bg-amber-50 rounded-lg mb-5 break-words">{{ ui(notice) }}</p>
     <section v-if="rfq" class="bg-white border rounded-xl p-5 mb-6 space-y-3">
+      <ProductPhoto :image-id="rfq.imageId" :name="rfq.product" photo-class="w-full h-56 rounded-lg" />
       <h2 class="font-semibold">{{ ui('Dòng hàng yêu cầu') }}</h2>
       <ul class="text-sm space-y-2"><li v-for="line in requestedLines" :key="line.lineId" class="break-words"><strong>{{ line.product }}</strong> · {{ line.quantity }} {{ line.unit }}<p v-if="line.specifications" class="text-slate-500 mt-1 whitespace-pre-wrap">{{ line.specifications }}</p></li></ul>
       <p class="text-sm text-slate-500">{{ rfq.currency }} · {{ rfq.incoterm }} · {{ rfq.destination }} · {{ rfq.state }}</p>

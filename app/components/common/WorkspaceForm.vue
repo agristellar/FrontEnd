@@ -2,13 +2,15 @@
   <form class="space-y-4" @submit.prevent="$emit('submit', { ...model })">
     <div v-for="field in fields" :key="field.key">
       <label
+        v-if="field.type !== 'product-image'"
         :for="`field-${field.key}`"
         class="block text-sm font-medium mb-1.5"
         >{{ ui(field.label)
         }}<span v-if="field.required" class="text-red-600"> *</span></label
       >
+      <ProductImagePicker v-if="field.type === 'product-image'" v-model="model[field.key]" :disabled="busy" />
       <textarea
-        v-if="field.type === 'textarea'"
+        v-else-if="field.type === 'textarea'"
         :id="`field-${field.key}`"
         v-model="model[field.key]"
         :required="field.required"

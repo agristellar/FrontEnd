@@ -19,6 +19,7 @@
             v-model="form.email"
             :label="$t('auth.email')"
             type="email"
+            autocomplete="username"
             :placeholder="$t('auth.emailPlaceholder')"
             required
             :error="errors.email"
@@ -27,6 +28,7 @@
             v-model="form.password"
             :label="$t('auth.password')"
             type="password"
+            autocomplete="current-password"
             :placeholder="$t('auth.passwordPlaceholder')"
             required
             :error="errors.password"

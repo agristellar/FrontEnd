@@ -32,6 +32,7 @@
             <fieldset v-if="multiline" :disabled="busy" class="space-y-4">
               <legend class="font-medium mb-3">{{ ui('Dòng hàng') }}</legend>
               <div v-for="(line, index) in lineDrafts" :key="line.localId" class="border rounded-lg p-3 space-y-3">
+                <ProductImagePicker v-model="line.imageId" :disabled="busy" />
                 <p class="text-sm font-semibold">{{ ui('Dòng hàng') }} {{ index + 1 }}</p>
                 <label class="text-sm block">{{ ui('Sản phẩm') }}<input :id="`rfq-line-${index}-product`" v-model="line.product" required maxlength="200" class="w-full rounded-lg border-slate-300 mt-1" /></label>
                 <label class="text-sm block">{{ ui('Số lượng') }}<input :id="`rfq-line-${index}-quantity`" v-model="line.quantity" required inputmode="decimal" pattern="(0|[1-9][0-9]*)(\.[0-9]{1,7})?" class="w-full rounded-lg border-slate-300 mt-1" /></label>
@@ -50,7 +51,7 @@
           :key="r._id"
           :to="`/workspace/rfqs/${r._id}`"
           class="block bg-white border p-5 rounded-xl hover:border-emerald-500"
-          ><div class="flex justify-between gap-3">
+          ><ProductPhoto :image-id="r.imageId" :name="r.product" photo-class="w-full h-40 rounded-lg mb-4 border border-slate-100" /><div class="flex justify-between gap-3">
             <h2 class="font-semibold">{{ r.title }}</h2>
             <span class="text-xs text-emerald-700">{{ r.state }}</span>
           </div>
@@ -82,10 +83,11 @@ const notice = ref("");
 const busy = ref(false);
 const multiline = ref(false);
 let nextLine = 1;
-const lineDrafts = ref([{ localId: 0, product: '', specifications: '', quantity: '', unit: 'kg' }]);
-const addLine = () => lineDrafts.value.push({ localId: nextLine++, product: '', specifications: '', quantity: '', unit: 'kg' });
+const lineDrafts = ref([{ localId: 0, product: '', imageId: undefined as string | undefined, specifications: '', quantity: '', unit: 'kg' }]);
+const addLine = () => lineDrafts.value.push({ localId: nextLine++, product: '', imageId: undefined as string | undefined, specifications: '', quantity: '', unit: 'kg' });
 const fields = computed(() => [
   { key: "title", label: ui("Tiêu đề"), required: true },
+  { key: "imageId", label: ui("Ảnh sản phẩm"), type: "product-image" },
   {
     key: "direction",
     label: ui("Loại yêu cầu"),

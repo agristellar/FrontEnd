@@ -1,0 +1,265 @@
+[
+  {
+    "key": "coffee-green",
+    "name": "Cà phê nhân",
+    "nameEn": "Green coffee",
+    "category": "Cà phê",
+    "tags": [
+      "ca phe robusta",
+      "ca phe arabica",
+      "green coffee"
+    ],
+    "url": "/images/products/coffee-green.webp",
+    "source": "ai-generated",
+    "background": "white"
+  },
+  {
+    "key": "coffee-roasted",
+    "name": "Cà phê rang xay",
+    "nameEn": "Roasted coffee",
+    "category": "Cà phê",
+    "tags": [
+      "ca phe rang",
+      "roasted coffee"
+    ],
+    "url": "/images/products/coffee-roasted.webp",
+    "source": "ai-generated",
+    "background": "white"
+  },
+  {
+    "key": "cashew",
+    "name": "Hạt điều",
+    "nameEn": "Cashew nuts",
+    "category": "Hạt & ngũ cốc",
+    "tags": [
+      "hat dieu",
+      "cashew"
+    ],
+    "url": "/images/products/cashew.webp",
+    "source": "ai-generated",
+    "background": "white"
+  },
+  {
+    "key": "rice-white",
+    "name": "Gạo trắng",
+    "nameEn": "White rice",
+    "category": "Hạt & ngũ cốc",
+    "tags": [
+      "gao thom",
+      "gao jasmine",
+      "white rice",
+      "st25"
+    ],
+    "url": "/images/products/rice-white.webp",
+    "source": "ai-generated",
+    "background": "white"
+  },
+  {
+    "key": "rice-brown",
+    "name": "Gạo lứt",
+    "nameEn": "Brown rice",
+    "category": "Hạt & ngũ cốc",
+    "tags": [
+      "gao lut",
+      "brown rice"
+    ],
+    "url": "/images/products/rice-brown.webp",
+    "source": "ai-generated",
+    "background": "white"
+  },
+  {
+    "key": "dragon-red",
+    "name": "Thanh long ruột đỏ",
+    "nameEn": "Red dragon fruit",
+    "category": "Trái cây",
+    "tags": [
+      "thanh long ruot do",
+      "red dragon"
+    ],
+    "url": "/images/products/dragon-red.webp",
+    "source": "ai-generated",
+    "background": "white"
+  },
+  {
+    "key": "dragon-white",
+    "name": "Thanh long ruột trắng",
+    "nameEn": "White dragon fruit",
+    "category": "Trái cây",
+    "tags": [
+      "thanh long ruot trang",
+      "white dragon"
+    ],
+    "url": "/images/products/dragon-white.webp",
+    "source": "ai-generated",
+    "background": "white"
+  },
+  {
+    "key": "dragon-dried",
+    "name": "Thanh long sấy",
+    "nameEn": "Dried dragon fruit",
+    "category": "Trái cây",
+    "tags": [
+      "thanh long say",
+      "dried dragon"
+    ],
+    "url": "/images/products/dragon-dried.webp",
+    "source": "ai-generated",
+    "background": "white"
+  },
+  {
+    "key": "pepper-black",
+    "name": "Hồ tiêu đen",
+    "nameEn": "Black pepper",
+    "category": "Gia vị",
+    "tags": [
+      "ho tieu den",
+      "black pepper"
+    ],
+    "url": "/images/products/pepper-black.webp",
+    "source": "ai-generated",
+    "background": "white"
+  },
+  {
+    "key": "pepper-white",
+    "name": "Hồ tiêu trắng",
+    "nameEn": "White pepper",
+    "category": "Gia vị",
+    "tags": [
+      "ho tieu trang",
+      "white pepper"
+    ],
+    "url": "/images/products/pepper-white.webp",
+    "source": "ai-generated",
+    "background": "white"
+  },
+  {
+    "key": "pepper-green",
+    "name": "Tiêu xanh sấy lạnh",
+    "nameEn": "Green pepper",
+    "category": "Gia vị",
+    "tags": [
+      "tieu xanh",
+      "green pepper"
+    ],
+    "url": "/images/products/pepper-green.webp",
+    "source": "ai-generated",
+    "background": "white"
+  },
+  {
+    "key": "coconut-dried",
+    "name": "Cơm dừa sấy",
+    "nameEn": "Desiccated coconut",
+    "category": "Dừa",
+    "tags": [
+      "com dua",
+      "desiccated coconut"
+    ],
+    "url": "/images/products/coconut-dried.webp",
+    "source": "ai-generated",
+    "background": "white"
+  },
+  {
+    "key": "coconut-water",
+    "name": "Nước dừa",
+    "nameEn": "Coconut water",
+    "category": "Dừa",
+    "tags": [
+      "nuoc dua",
+      "coconut water"
+    ],
+    "url": "/images/products/coconut-water.webp",
+    "source": "ai-generated",
+    "background": "white"
+  },
+  {
+    "key": "coconut-oil",
+    "name": "Dầu dừa",
+    "nameEn": "Coconut oil",
+    "category": "Dừa",
+    "tags": [
+      "dau dua",
+      "coconut oil"
+    ],
+    "url": "/images/products/coconut-oil.webp",
+    "source": "ai-generated",
+    "background": "white"
+  },
+  {
+    "key": "mango-fresh",
+    "name": "Xoài tươi",
+    "nameEn": "Fresh mango",
+    "category": "Trái cây",
+    "tags": [
+      "xoai cat chu",
+      "fresh mango"
+    ],
+    "url": "/images/products/mango-fresh.webp",
+    "source": "ai-generated",
+    "background": "white"
+  },
+  {
+    "key": "mango-dried",
+    "name": "Xoài sấy dẻo",
+    "nameEn": "Dried mango",
+    "category": "Trái cây",
+    "tags": [
+      "xoai say",
+      "dried mango"
+    ],
+    "url": "/images/products/mango-dried.webp",
+    "source": "ai-generated",
+    "background": "white"
+  },
+  {
+    "key": "mango-frozen",
+    "name": "Xoài đông lạnh",
+    "nameEn": "Frozen mango",
+    "category": "Trái cây",
+    "tags": [
+      "xoai dong lanh",
+      "frozen mango"
+    ],
+    "url": "/images/products/mango-frozen.webp",
+    "source": "ai-generated",
+    "background": "white"
+  },
+  {
+    "key": "banana",
+    "name": "Chuối Cavendish",
+    "nameEn": "Cavendish banana",
+    "category": "Trái cây",
+    "tags": [
+      "chuoi",
+      "banana"
+    ],
+    "url": "/images/products/banana.webp",
+    "source": "ai-generated",
+    "background": "white"
+  },
+  {
+    "key": "sesame",
+    "name": "Mè trắng",
+    "nameEn": "White sesame",
+    "category": "Hạt & ngũ cốc",
+    "tags": [
+      "me trang",
+      "sesame"
+    ],
+    "url": "/images/products/sesame.webp",
+    "source": "ai-generated",
+    "background": "white"
+  },
+  {
+    "key": "mung",
+    "name": "Đậu xanh",
+    "nameEn": "Mung beans",
+    "category": "Hạt & ngũ cốc",
+    "tags": [
+      "dau xanh",
+      "mung"
+    ],
+    "url": "/images/products/mung.webp",
+    "source": "ai-generated",
+    "background": "white"
+  }
+]

@@ -1,5 +1,6 @@
 <template>
   <article class="bg-white border border-slate-200 rounded-xl p-5 flex flex-col min-w-0" :data-public-order="order._id">
+    <NuxtLink :to="`/orders/${order._id}`" :aria-label="order.title" class="block mb-4"><ProductPhoto :image-id="order.imageId" :name="order.product || order.lines?.[0]?.product" /></NuxtLink>
     <p class="text-xs font-medium text-emerald-700">{{ ui(order.direction === 'buy' ? 'Nhu cầu mua' : 'Chào bán') }}</p>
     <h3 class="text-lg font-semibold mt-2 break-words"><NuxtLink :to="`/orders/${order._id}`" class="hover:text-emerald-800">{{ order.title }}</NuxtLink></h3>
     <p v-if="order.quoteIntakeState === 'paused'" class="text-xs text-amber-800 mt-2">{{ ui('Đang tạm dừng nhận báo giá') }}</p>

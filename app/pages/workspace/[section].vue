@@ -206,6 +206,7 @@
                   :key="c.key"
                   class="px-3 py-4 max-w-80 break-words"
                 >
+                  <ProductPhoto v-if="section === 'products' && c.key === 'name'" :image-id="item.imageId" :name="item.name" photo-class="w-20 h-20 rounded-lg mb-2 border border-slate-100" />
                   {{ cell(item, c.key) }}
                 </td>
                 <td class="px-3 py-4">
@@ -425,6 +426,7 @@ const dictionary: Record<string, any> = {
     endpoint: "/platform/products",
     fields: [
       { key: "name", label: ui("Tên sản phẩm"), required: true },
+      { key: "imageId", label: ui("Ảnh sản phẩm"), type: "product-image" },
       { key: "category", label: ui("Ngành hàng") },
       { key: "description", label: ui("Mô tả"), type: "textarea" },
       { key: "unit", label: ui("Đơn vị"), required: true },
